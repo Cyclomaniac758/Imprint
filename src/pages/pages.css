@@ -1,0 +1,16 @@
+.heading {
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vh;
+    margin-left: 5vh;
+}
+
+.page {
+    background-color: #F9F9F9;
+    height: 100vh;
+}
+
+.image {
+    border-radius: 8px;
+}
