@@ -16,7 +16,7 @@ function Scenario(props) {
     }
 
     return (
-            <Link to={calculateLink()}>
+            <Link to={calculateLink()} style={{ textDecoration: 'none' }}>
                 <Card>
                 <CardActionArea>
                 <Typography variant='h6' sx={{fontWeight: '500'}}>{props.scenario}</Typography>

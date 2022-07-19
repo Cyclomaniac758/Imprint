@@ -4,24 +4,41 @@ import Logo from "../logo/Logo";
 import './pages.css';
 import home2 from '../images/home2.jpg';
 import Page1 from "../fromHomePages/Page1";
+import Page2 from "../fromHomePages/Page2";
 import { useState } from "react";
+import Page3 from "../fromHomePages/Page3";
+
 
 
 
 function FromHome() {
-    let finished = false;
-    let hours = 0;
-    let page = 1;
+    let [hours, setHours] = useState(0);
+    let [page, setPage] = useState(1);
+    let [camera, setCamera] = useState(true);
+    let [connection, setConnection] = useState('');
+    let [zoom, setZoom] = useState(1);
+    let [heatingHours, setHeatingHours] = useState(0);
+    let [heating, setHeating] = useState(1);
 
-    let state = useState(1);
+    function calculateResult() {
+        console.log(zoom === 'false');
+        console.log(hours);
+        console.log(camera);
+        console.log(connection);
+        console.log(heating);
+        console.log(heatingHours);
+    }
 
     function buttonClick() {
-        console.log(hours)
-        page++;
+        if (page < 3) {
+            setPage(page+1);
+        } else {
+            calculateResult();
+        }
     }
 
     function updateHours(newHours) {
-        hours = newHours;
+        setHours(newHours);
     }
 
     return (
@@ -35,7 +52,9 @@ function FromHome() {
                 </Typography>
                 <img className="image" src={home2} height='175px' width='auto' alt="logo"  />
                 {page === 1 && <Page1 updateHours={updateHours}/>}
-                <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{(finished && 'CALCULATE') || 'NEXT'}</Button>
+                {page === 2 && <Page2 setCamera={setCamera} camera={camera} setZoom={setZoom} connection={connection} setConnection={setConnection}/>}
+                {page === 3 && <Page3 setHeatingHours={setHeatingHours} setHeating={setHeating}/>}
+                <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{(page===3 && 'CALCULATE') || 'NEXT'}</Button>
             </Container>
         </div>
     )
