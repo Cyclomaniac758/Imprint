@@ -65,10 +65,10 @@ function Page2(props) {
                                 displayEmpty
                                 onChange={updateConnection}
                             >
-                                <MenuItem value={1}>Fibre</MenuItem>
-                                <MenuItem value={2}>VDSL</MenuItem>
-                                <MenuItem value={3}>Fixed Wireless</MenuItem>
-                                <MenuItem value={4}>HFC</MenuItem>
+                                <MenuItem value={'Fibre'}>Fibre</MenuItem>
+                                <MenuItem value={'VDSL'}>VDSL</MenuItem>
+                                <MenuItem value={'Fixed Wireless'}>Fixed Wireless</MenuItem>
+                                <MenuItem value={'HFC'}>HFC</MenuItem>
                             </Select>
                         </FormControl>
 

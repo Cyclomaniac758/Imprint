@@ -9,7 +9,13 @@ import React, { useState } from "react";
 import Page3 from "../fromHomePages/Page3";
 import { useNavigate } from "react-router-dom";
 
-
+// real factor values still needed
+const connectionFactors = {
+    'Fibre': .000001,
+    'VDSL': .000002,
+    'Fixed Wireless': .000003,
+    'HFC': .000004
+}
 
 function FromHome() {
     const [hours, setHours] = useState(0);
@@ -26,12 +32,35 @@ function FromHome() {
         //teams bandwidth  4000kbps / 76kbps
         //time = hours * 3600
         // power consumption from tech in Sapere
+        // 2020 power consumption emissions 0.1167
 
         //heating heat pump .408 kg / day assumes 6hr
         // .068 / hr
         //heating electric .815 kg / day assumes 6hr
         // 0.136 / hr
-        navigate('/result', {state: {result: 1}});
+        console.log(heatingHours)
+        console.log(heating)
+        console.log(connection);
+        console.log(connectionFactors[connection])
+        console.log(hours)
+
+        //need to decide how many weeks for heating
+        const heatingE = heatingHours * (heating ? 0.068 : 0.815) * 7 * 16;
+
+        const powerE2020 =  0.1167
+        let bandwidth;
+        if (zoom) {
+            bandwidth = camera ? 3.8 : .150;
+        } else {
+            bandwidth = camera ? 4 : .076;
+        }
+        console.log(bandwidth)
+        const videoE = bandwidth * connectionFactors[connection] * hours * 3600 * powerE2020;
+        console.log(heatingE);
+        console.log(videoE);
+        const total = heatingE + (videoE * 7 * 50);
+
+        navigate('/result', {state: {result: total.toFixed(3)}});
     }
 
     function buttonClick() {
