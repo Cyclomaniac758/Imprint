@@ -5,28 +5,33 @@ import './pages.css';
 import home2 from '../images/home2.jpg';
 import Page1 from "../fromHomePages/Page1";
 import Page2 from "../fromHomePages/Page2";
-import { useState } from "react";
+import React, { useState } from "react";
 import Page3 from "../fromHomePages/Page3";
-
+import { useNavigate } from "react-router-dom";
 
 
 
 function FromHome() {
-    let [hours, setHours] = useState(0);
-    let [page, setPage] = useState(1);
-    let [camera, setCamera] = useState(true);
-    let [connection, setConnection] = useState('');
-    let [zoom, setZoom] = useState(1);
-    let [heatingHours, setHeatingHours] = useState(0);
-    let [heating, setHeating] = useState(1);
+    const [hours, setHours] = useState(0);
+    const [page, setPage] = useState(1);
+    const [camera, setCamera] = useState(true);
+    const [connection, setConnection] = useState('');
+    const [zoom, setZoom] = useState(1);
+    const [heatingHours, setHeatingHours] = useState(0);
+    const [heating, setHeating] = useState(1);
+    const navigate = useNavigate();
 
     function calculateResult() {
-        console.log(zoom === 'false');
-        console.log(hours);
-        console.log(camera);
-        console.log(connection);
-        console.log(heating);
-        console.log(heatingHours);
+        //zoom bandwidth 3800mbps / 150kbps
+        //teams bandwidth  4000kbps / 76kbps
+        //time = hours * 3600
+        // power consumption from tech in Sapere
+
+        //heating heat pump .408 kg / day assumes 6hr
+        // .068 / hr
+        //heating electric .815 kg / day assumes 6hr
+        // 0.136 / hr
+        navigate('/result', {state: {result: 1}});
     }
 
     function buttonClick() {

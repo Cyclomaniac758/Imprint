@@ -99,7 +99,7 @@ function Page3(props) {
                             row
                             defaultValue={1}
                         >
-                            <FormControlLabel value={1} onChange={updateHeating} control={<Radio />} label="Gas" />
+                            <FormControlLabel value={1} onChange={updateHeating} control={<Radio />} label="Heat Pump" />
                             <FormControlLabel value={2} onChange={updateHeating} control={<Radio />} label="Electric" />
                         </RadioGroup>
                     </Grid>
