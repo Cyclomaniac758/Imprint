@@ -39,7 +39,7 @@ function InTheOffice() {
 
         total = total * 50;
 
-        navigate('/result', {state: {result: total}});
+        navigate('/result', {state: {result: total.toFixed(3)}});
     }
 
     function buttonClick() {
