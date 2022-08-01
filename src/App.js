@@ -1,15 +1,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import FromHome from './pages/FromHome';
-import Home from './pages/Home';
+import Home2 from './pages/Home2';
 import InTheOffice from './pages/InTheOffice';
 import Hybrid from './pages/Hybrid';
 import Result from "./pages/Result";
+import Calculator from "./pages/Calculator";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Home2/>}/>
+        <Route path='/calculator' element={<Calculator/>}/>
         <Route path='/fromHome' element={<FromHome/>}/>
         <Route path='/inTheOffice' element={<InTheOffice/>}/>
         <Route path='/hybrid' element={<Hybrid/>}/>

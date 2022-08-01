@@ -1,11 +1,11 @@
 .App {
     text-align: center;
     background-color: #F9F9F9;
-    height: 100vh;
+    height: 100%;
   }
   
 .Home-header {
-    padding-top: 10vh;
+    padding-top: 5vh;
 }
 
 .optionsLabel {
@@ -15,4 +15,10 @@
     align-items: center;
 }
   
+.Helpertext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 55vw;
+    text-align: left;
+}
   

@@ -17,9 +17,8 @@ const connectionFactors = {
     'HFC': .000004
 }
 
-function FromHome() {
+function FromHome(props) {
     const [hours, setHours] = useState(0);
-    const [page, setPage] = useState(1);
     const [camera, setCamera] = useState(true);
     const [connection, setConnection] = useState('');
     const [zoom, setZoom] = useState(1);
@@ -64,10 +63,15 @@ function FromHome() {
     }
 
     function buttonClick() {
-        if (page < 3) {
-            setPage(page+1);
+        if (props.page===5 && props.officeComplete) {
+            props.calculateResult();
+        }
+        else if (props.page < 8) {
+            props.setPage(props.page+1);
+            console.log(props.page);
+            console.log(props.officeComplete);
         } else {
-            calculateResult();
+            props.calculateResult();
         }
     }
 
@@ -76,20 +80,15 @@ function FromHome() {
     }
 
     return (
-        <div className="page">
-            <header className="heading">
-                <Logo/>
-            </header>
-            <Container sx={{textAlign: "center", height: '100vh', justifyContent: 'center'}}>
-                <Typography variant="subtitle2">
-                    Working From Home
-                </Typography>
-                <img className="image" src={home2} height='175px' width='auto' alt="logo"  />
-                {page === 1 && <Page1 updateHours={updateHours}/>}
-                {page === 2 && <Page2 setCamera={setCamera} camera={camera} setZoom={setZoom} connection={connection} setConnection={setConnection}/>}
-                {page === 3 && <Page3 setHeatingHours={setHeatingHours} setHeating={setHeating}/>}
-                <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{(page===3 && 'CALCULATE') || 'NEXT'}</Button>
-            </Container>
+        <div>
+            <Typography variant="subtitle2">
+                Working From Home
+            </Typography>
+            <img className="image" src={home2} height='175px' width='auto' alt="logo"  />
+            {(props.page === 6 || props.page === 3) && <Page1 updateHours={updateHours}/>}
+            {(props.page === 7 || props.page === 4)  && <Page2 setCamera={setCamera} camera={camera} setZoom={setZoom} connection={connection} setConnection={setConnection}/>}
+            {(props.page === 8 || props.page === 5) && <Page3 setHeatingHours={setHeatingHours} setHeating={setHeating}/>}
+            <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{(props.page===8 || props.officeComplete&&props.page===5) ? 'CALCULATE' : 'NEXT'}</Button>
         </div>
     )
 }
