@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Tooltip, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
@@ -31,7 +31,7 @@ function Page2(props) {
     return (
         <>
             <Box sx={{paddingTop: '40px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                <Typography variant='h6' sx={{ml: '10px'}}>Videoconferencing</Typography>
+                <Typography variant='h6' sx={{ml: '10px'}}>Virtual Meetings</Typography>
             </Box>
             <Box sx={{paddingTop: '30px',flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <Grid container sx={{width: '60%'}}>
@@ -65,13 +65,15 @@ function Page2(props) {
                                 displayEmpty
                                 onChange={updateConnection}
                             >
-                                <MenuItem value={'Fibre'}>Fibre</MenuItem>
+                                <MenuItem value={'Fibre'}>Fibre (default)</MenuItem>
                                 <MenuItem value={'VDSL'}>VDSL</MenuItem>
                                 <MenuItem value={'Fixed Wireless'}>Fixed Wireless</MenuItem>
                                 <MenuItem value={'HFC'}>HFC</MenuItem>
                             </Select>
                         </FormControl>
-
+                        <Tooltip placement="top-start" title='This can be found on old internet bills, and is the broadband infrastructure that allows you to connect to the web'>
+                            <Typography variant='h6' sx={{ml: '15px', '&:hover': {cursor: 'pointer'}}}>?</Typography>
+                        </Tooltip>
                     </Grid>
                 </Grid>
             </Box>

@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import OfficePage1 from "../fromOfficePages/OfficePage1";
 import OfficePage2 from "../fromOfficePages/OfficePage2";
 import OfficePage3 from "../fromOfficePages/OfficePage3";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const commuteFactors = {
     'Car-Petrol': 0.265,
@@ -37,6 +38,10 @@ function InTheOffice(props) {
         }
     }
 
+    function backButtonClick() {
+        props.setPage(props.page-1);
+    }
+
     return (
         <div>
             <Typography variant="subtitle2">
@@ -46,6 +51,7 @@ function InTheOffice(props) {
             {props.page === 3 && <OfficePage1 setDistance={setDistance}/>}
             {props.page === 4 && <OfficePage2 vehicles={vehicles} setVehicles={setVehicles}/>}
             {props.page === 5 && <OfficePage3 vehicles={vehicles} setVehicles={setVehicles} vehicleDays={vehicleDays} setVehicleDays={setVehicleDays}/>}
+            <Button color='secondary' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>
             <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{(props.homeComplete&&props.page===5) ? 'CALCULATE' : 'NEXT'}</Button>
         </div>
     )

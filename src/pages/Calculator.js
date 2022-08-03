@@ -1,7 +1,6 @@
 import Logo from "../logo/Logo";
 import './pages.css';
 import {Container} from "@mui/system";
-import {Button} from "@mui/material";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import WeekBreakdown from "./WeekBreakdown";
@@ -53,25 +52,13 @@ function Calculator() {
         navigate('/result', {state: {result: total.toFixed(3)}});
     }
 
-    function buttonClick() {
-        if (page+1===6 && !officeComplete) {
-            setPage(page+1);
-            setOfficeComplete(true);
-        }
-        else if (page < 8) {
-            setPage(page+1);
-        } else {
-            calculateResult();
-        }
-    }
-
     return (
         <div className="page">
             <header className="heading">
                 <Logo/>
             </header>
             <Container sx={{textAlign: "center", height: '100vh', justifyContent: 'center'}}>
-                {page < 3 && <WeekBreakdown page={page} setPage={setPage} daysFromOffice={daysFromOffice} daysFromHome={daysFromHome} setDaysFromOffice={setDaysFromOffice} setDaysFromHome={setDaysFromHome} setOfficeComplete={setOfficeComplete} setHomeComplete={setHomeComplete}/>}
+                {(page === 1 || page === 2) && <WeekBreakdown page={page} setPage={setPage} daysFromOffice={daysFromOffice} daysFromHome={daysFromHome} setDaysFromOffice={setDaysFromOffice} setDaysFromHome={setDaysFromHome} setOfficeComplete={setOfficeComplete} setHomeComplete={setHomeComplete}/>}
                 {(page>2 && !officeComplete) && <InTheOffice page={page} setPage={setPage} setOfficeComplete={setOfficeComplete} calculateResult={calculateResult} homeComplete={homeComplete}/>}
                 {(officeComplete && page>2 && !homeComplete) && <FromHome page={page} setPage={setPage} calculateResult={calculateResult} officeComplete={officeComplete}/>}
             </Container>

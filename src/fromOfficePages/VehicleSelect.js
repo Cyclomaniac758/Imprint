@@ -57,12 +57,12 @@ function VehicleSelect(props) {
     return (
         <div>
             <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel>Type/s</InputLabel>
+                <InputLabel>Modes</InputLabel>
                 <Select
                     multiple
                     value={props.vehicleNames}
                     onChange={handleChange}
-                    input={<OutlinedInput label="Type/s" />}
+                    input={<OutlinedInput label="Modes" />}
                     renderValue={(selected) => (
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                             {selected.map((value) => (

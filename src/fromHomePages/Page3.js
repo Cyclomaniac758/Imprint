@@ -84,15 +84,12 @@ function Page3(props) {
         <>
             <Box sx={{paddingTop: '40px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                 <LocalFireDepartmentIcon fontSize={'large'} sx={{color: '#116939'}}/>
-                <Typography variant='h6' sx={{ml: '10px'}}>Heating During Winter</Typography>
+                <Typography variant='h6' sx={{ml: '10px'}}>Select Time Using Heating In Work Hours During Winter</Typography>
             </Box>
             <Box sx={{paddingTop: '30px',flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <Grid container sx={{width: '60%'}}>
                     <Grid item xs={12} sx={{flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <Slider defaultValue={0} min={0} max={8} marks={marks} step={.5} onChange={sliderChange}/>
-                    </Grid>
-                    <Grid item xs={12} sx={{flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <Typography variant={'s4'}>Average Hours Per Working Day</Typography>
                     </Grid>
                     <Grid item xs={12} sx={{mt: '30px', flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <RadioGroup
@@ -100,7 +97,8 @@ function Page3(props) {
                             defaultValue={1}
                         >
                             <FormControlLabel value={1} onChange={updateHeating} control={<Radio />} label="Heat Pump" />
-                            <FormControlLabel value={0} onChange={updateHeating} control={<Radio />} label="Electric" />
+                            <FormControlLabel value={0} onChange={updateHeating} control={<Radio />} label="Electric Oil Heater" />
+                            <FormControlLabel value={2} onChange={updateHeating} control={<Radio />} label="Wood Stove" />
                         </RadioGroup>
                     </Grid>
                 </Grid>

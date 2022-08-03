@@ -1,6 +1,4 @@
 import { Button, Typography } from "@mui/material";
-import { Container } from "@mui/system";
-import Logo from "../logo/Logo";
 import './pages.css';
 import home2 from '../images/home2.jpg';
 import Page1 from "../fromHomePages/Page1";
@@ -8,6 +6,8 @@ import Page2 from "../fromHomePages/Page2";
 import React, { useState } from "react";
 import Page3 from "../fromHomePages/Page3";
 import { useNavigate } from "react-router-dom";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 
 // real factor values still needed
 const connectionFactors = {
@@ -75,6 +75,10 @@ function FromHome(props) {
         }
     }
 
+    function backButtonClick() {
+        props.setPage(props.page-1);
+    }
+
     function updateHours(newHours) {
         setHours(newHours);
     }
@@ -88,7 +92,8 @@ function FromHome(props) {
             {(props.page === 6 || props.page === 3) && <Page1 updateHours={updateHours}/>}
             {(props.page === 7 || props.page === 4)  && <Page2 setCamera={setCamera} camera={camera} setZoom={setZoom} connection={connection} setConnection={setConnection}/>}
             {(props.page === 8 || props.page === 5) && <Page3 setHeatingHours={setHeatingHours} setHeating={setHeating}/>}
-            <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{(props.page===8 || props.officeComplete&&props.page===5) ? 'CALCULATE' : 'NEXT'}</Button>
+            <Button color='secondary' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>
+            <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{(props.page===8 || (props.officeComplete&&props.page===5)) ? 'CALCULATE' : 'NEXT'}</Button>
         </div>
     )
 }

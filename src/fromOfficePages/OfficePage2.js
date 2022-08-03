@@ -11,7 +11,7 @@ function OfficePage2(props) {
         <>
             <Box sx={{paddingTop: '40px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                 <CommuteIcon fontSize='large' sx={{color:'#116939'}}/>
-                <Typography variant='h6' sx={{ml: '10px'}}>Commute type/s</Typography>
+                <Typography variant='h6' sx={{ml: '10px'}}>Select Commute Mode/s Used Throughout The Week</Typography>
             </Box>
             <Box sx={{paddingTop: '30px',flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <Grid container sx={{width: '60%'}}>

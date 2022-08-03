@@ -3,9 +3,8 @@ import { Container } from "@mui/system";
 import './pages.css';
 import home2 from '../images/home2.jpg';
 import office from '../images/office.jpg'
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
 import {Button} from "@mui/material";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import React from "react";
 
@@ -13,7 +12,7 @@ function WeekBreakdown(props) {
     
     function updateDaysFromOFfice(event) {
         props.setDaysFromOffice(event.target.value);
-        console.log(event.target.value)
+        props.setDaysFromHome(event.target.value);
     }
 
     function updateDaysFromHome(event) {
@@ -58,11 +57,17 @@ function WeekBreakdown(props) {
     function buttonClick() {
         if (props.daysFromOffice===0) {
             props.setOfficeComplete(true);
+        } else {
+            props.setOfficeComplete(false);
         }
         if (props.daysFromHome===0 && props.page>1) {
             props.setHomeComplete(true);
         }
         props.setPage(props.page+1);
+    }
+
+    function backButtonClick() {
+        props.setPage(props.page-1);
     }
     
     return (
@@ -83,7 +88,8 @@ function WeekBreakdown(props) {
                 <Container sx={{width: '50%', mt: '3vh'}}>
                     <Slider defaultValue={0} min={0} max={7} marks={marks} step={1} onChange={props.page===1 ? updateDaysFromOFfice : updateDaysFromHome}/>
                 </Container>
-                <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{((props.page===8 || props.officeComplete&&props.page===5) && 'CALCULATE') || 'NEXT'}</Button>
+                {props.page===2 && <Button color='secondary' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>}
+                <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{'NEXT'}</Button>
             </Container>
         </div>
     )
