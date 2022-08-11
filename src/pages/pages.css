@@ -4,6 +4,7 @@
     flex-direction: row;
     margin-top: 1vh;
     margin-left: 5vh;
+    justify-content: center;
 }
 
 .page {

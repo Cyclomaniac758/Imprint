@@ -7,7 +7,7 @@ function Page1(props) {
     const marks = [
         {
             value: 0,
-            label: '0hrs'
+            label: '0 hrs'
         },
         {
             value: .5,
@@ -63,7 +63,7 @@ function Page1(props) {
         },
         {
             value: 8,
-            label: '8hrs'
+            label: '8+ hrs'
         }
     ];
 

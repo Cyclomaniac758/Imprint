@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import Page3 from "../fromHomePages/Page3";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 // real factor values still needed
 const connectionFactors = {
@@ -67,6 +67,7 @@ function FromHome(props) {
             props.calculateResult();
         }
         else if (props.page < 8) {
+            props.setProgress(props.progress+10);
             props.setPage(props.page+1);
             console.log(props.page);
             console.log(props.officeComplete);
@@ -76,6 +77,11 @@ function FromHome(props) {
     }
 
     function backButtonClick() {
+        if (props.page === 3) {
+            props.setProgress(20);
+        } else {
+            props.setProgress(props.progress-10);
+        }
         props.setPage(props.page-1);
     }
 
@@ -92,8 +98,8 @@ function FromHome(props) {
             {(props.page === 6 || props.page === 3) && <Page1 updateHours={updateHours}/>}
             {(props.page === 7 || props.page === 4)  && <Page2 setCamera={setCamera} camera={camera} setZoom={setZoom} connection={connection} setConnection={setConnection}/>}
             {(props.page === 8 || props.page === 5) && <Page3 setHeatingHours={setHeatingHours} setHeating={setHeating}/>}
-            <Button color='secondary' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>
-            <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{(props.page===8 || (props.officeComplete&&props.page===5)) ? 'CALCULATE' : 'NEXT'}</Button>
+            <Button variant='contained' color='secondary' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>
+            <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{(props.page===8 || (props.officeComplete&&props.page===5)) ? 'CALCULATE' : 'NEXT'}<ArrowForwardIcon/></Button>
         </div>
     )
 }

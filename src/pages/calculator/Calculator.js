@@ -1,11 +1,14 @@
-import Logo from "../logo/Logo";
-import './pages.css';
+import Logo from "../../logo/Logo";
+import '../pages.css';
 import {Container} from "@mui/system";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import WeekBreakdown from "./WeekBreakdown";
-import InTheOffice from "./InTheOffice";
-import FromHome from "./FromHome";
+import WeekBreakdown from "../WeekBreakdown";
+import InTheOffice from "../InTheOffice";
+import FromHome from "../FromHome";
+import Stack from '@mui/material/Stack';
+import { Box } from "@mui/material";
+import LinearProgressWithLabel from "./ProgressBar";
 
 const commuteFactors = {
     'Car-Petrol': 0.265,
@@ -24,6 +27,7 @@ const commuteFactors = {
 function Calculator() {
     const navigate = useNavigate();
     const [page, setPage] = useState(1);
+    const [progress, setProgress] = useState(10);
 
     const [daysFromOffice, setDaysFromOffice] = useState(0);  
     const [daysFromHome, setDaysFromHome] = useState(0);
@@ -56,11 +60,16 @@ function Calculator() {
         <div className="page">
             <header className="heading">
                 <Logo/>
+                <Box sx={{ width: '100%', textAlign: 'center', height: '100%'}}>
+                    <Stack sx={{ width: '80%', color: 'grey.500', m: 'auto auto'}} spacing={2}>
+                        <LinearProgressWithLabel value={progress} />
+                    </Stack> 
+                </Box>          
             </header>
             <Container sx={{textAlign: "center", height: '100vh', justifyContent: 'center'}}>
-                {(page === 1 || page === 2) && <WeekBreakdown page={page} setPage={setPage} daysFromOffice={daysFromOffice} daysFromHome={daysFromHome} setDaysFromOffice={setDaysFromOffice} setDaysFromHome={setDaysFromHome} setOfficeComplete={setOfficeComplete} setHomeComplete={setHomeComplete}/>}
-                {(page>2 && !officeComplete) && <InTheOffice page={page} setPage={setPage} setOfficeComplete={setOfficeComplete} calculateResult={calculateResult} homeComplete={homeComplete}/>}
-                {(officeComplete && page>2 && !homeComplete) && <FromHome page={page} setPage={setPage} calculateResult={calculateResult} officeComplete={officeComplete}/>}
+                {(page === 1 || page === 2) && <WeekBreakdown page={page} setPage={setPage} daysFromOffice={daysFromOffice} daysFromHome={daysFromHome} setDaysFromOffice={setDaysFromOffice} setDaysFromHome={setDaysFromHome} setOfficeComplete={setOfficeComplete} setHomeComplete={setHomeComplete} setProgress={setProgress}/>}
+                {(page>2 && !officeComplete) && <InTheOffice page={page} setPage={setPage} setOfficeComplete={setOfficeComplete} calculateResult={calculateResult} homeComplete={homeComplete} setProgress={setProgress} progress={progress}/>}
+                {(officeComplete && page>2 && !homeComplete) && <FromHome page={page} setPage={setPage} calculateResult={calculateResult} officeComplete={officeComplete} setProgress={setProgress} progress={progress}/>}
             </Container>
         </div>
     )

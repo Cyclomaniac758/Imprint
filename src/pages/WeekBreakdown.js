@@ -5,6 +5,7 @@ import home2 from '../images/home2.jpg';
 import office from '../images/office.jpg'
 import {Button} from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import React from "react";
 
@@ -63,11 +64,17 @@ function WeekBreakdown(props) {
         if (props.daysFromHome===0 && props.page>1) {
             props.setHomeComplete(true);
         }
+        if (props.page === 1) {
+            props.setProgress(20);
+        } else {
+            props.setProgress(50);
+        }
         props.setPage(props.page+1);
     }
 
     function backButtonClick() {
         props.setPage(props.page-1);
+        props.setProgress(10);
     }
     
     return (
@@ -88,8 +95,8 @@ function WeekBreakdown(props) {
                 <Container sx={{width: '50%', mt: '3vh'}}>
                     <Slider defaultValue={0} min={0} max={7} marks={marks} step={1} onChange={props.page===1 ? updateDaysFromOFfice : updateDaysFromHome}/>
                 </Container>
-                {props.page===2 && <Button color='secondary' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>}
-                <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{'NEXT'}</Button>
+                {props.page===2 && <Button variant='contained' color='secondary' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>}
+                <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{'NEXT'}<ArrowForwardIcon/></Button>
             </Container>
         </div>
     )

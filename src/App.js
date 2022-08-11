@@ -4,7 +4,7 @@ import Home2 from './pages/Home2';
 import InTheOffice from './pages/InTheOffice';
 import Hybrid from './pages/Hybrid';
 import Result from "./pages/Result";
-import Calculator from "./pages/Calculator";
+import Calculator from "./pages/calculator/Calculator";
 
 function App() {
   return (
