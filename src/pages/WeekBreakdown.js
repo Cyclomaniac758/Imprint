@@ -90,7 +90,7 @@ function WeekBreakdown(props) {
                     <img className="image" src={props.page===1 ? office : home2} height='175px' width='auto' alt="logo"  />
                 </Container>
                 <Typography variant="subtitle1" sx={{mt: '3vh'}}>
-                    {props.page===1 ? 'Select number of days working in the office' : 'Select number of days working from home'}
+                    {props.page===1 ? 'Select number of days working in the office*' : 'Select number of days working from home*'}
                 </Typography>
                 <Container sx={{width: '50%', mt: '3vh'}}>
                     <Slider defaultValue={0} min={0} max={7} marks={marks} step={1} onChange={props.page===1 ? updateDaysFromOFfice : updateDaysFromHome}/>
