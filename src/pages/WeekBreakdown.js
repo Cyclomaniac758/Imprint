@@ -98,6 +98,11 @@ function WeekBreakdown(props) {
                 {props.page===2 && <Button variant='contained' color='secondary' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>}
                 <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{'NEXT'}<ArrowForwardIcon/></Button>
             </Container>
+            <Container sx={{textAlign: 'left', ml: '25%'}}>
+                <Typography variant="subtitle4" color='#116939' sx={{bottom: '10px', position: 'fixed'}}>
+                    *Include mixed days where you work both from home and in the office
+                </Typography>
+            </Container>
         </div>
     )
 }

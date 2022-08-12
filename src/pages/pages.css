@@ -2,7 +2,6 @@
     text-align: left;
     display: flex;
     flex-direction: row;
-    margin-top: 1vh;
     margin-left: 5vh;
     justify-content: center;
 }
@@ -14,4 +13,9 @@
 
 .image {
     border-radius: 8px;
+}
+
+.css-1p8520q-MuiContainer-root {
+   height: 0 !important;
+   text-align: center;
 }

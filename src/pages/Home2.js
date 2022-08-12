@@ -14,7 +14,7 @@ function Home2() {
 
     return (
         <div className="App">
-            <Container >
+            <Container sx={{height: '100%'}}>
                 <header className='Home-header'>
                     <Logo/>
                 </header>
@@ -30,7 +30,7 @@ function Home2() {
                     <Typography variant='subtitle1'>Our climate is changing faster than any other time in our history, due to the rapidly increasing greenhouse gas emissions in our atmosphere. We can take individual action to collectively reduce our emissions – the first step is to understand our individual emissions footprint. This calculator has been designed to help you understand and compare the emissions footprint of your different working scenarios – whether that be driving or busing to work or working from home.</Typography>
                     <Typography variant='h4' sx={{alignSelf: 'left', mt: '30vh', m: '10px', color:'#116939', fontFamily: 'Monospace'}}>What We Need From You</Typography>
                     <Typography variant='subtitle1'>The calculator works by asking you a series of questions about your working situation, including where you work - office or home, how far you travel to and from your office and by what mode, what broadband connection type and video conferencing platform you use when working from home. </Typography>
-                    <Typography variant='subtitle1' sx={{mt: '1vh', mb: '10vh'}}>The calculator will take you around 5 minutes to complete and will give you insights into your emissions footprint from your different working scenarios and enable you to see how small changes in your commuting and remote working habits can make a difference. </Typography>
+                    <Typography variant='subtitle1' sx={{mt: '1vh'}}>The calculator will take you around 5 minutes to complete and will give you insights into your emissions footprint from your different working scenarios and enable you to see how small changes in your commuting and remote working habits can make a difference. </Typography>
                 </div>
             </Container>
         </div>
