@@ -8,20 +8,6 @@ import OfficePage3 from "../fromOfficePages/OfficePage3";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-const commuteFactors = {
-    'Car-Petrol': 0.265,
-    'Car-Diesel': 0.270,
-    'Car-Electric': 0.026,
-    'Car-Diesel Hybrid': 0.242,
-    'Car-Petrol Hybrid': 0.201,
-    'Bus': 0.155,
-    'Motorcycle <60cc': 0.066,
-    'Motorcycle >60cc': 0.131,
-    'Rail': 0.019,
-    'Taxi': 0.225,
-    'Walking/Biking': 0
-}
-
 function InTheOffice(props) {
     const [distance, setDistance] = useState(0);
     const [vehicles, setVehicles] = useState([]);

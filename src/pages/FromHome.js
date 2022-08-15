@@ -44,9 +44,11 @@ function FromHome(props) {
         console.log(hours)
 
         //need to decide how many weeks for heating
+        //todo substitute 7 days in a week to number of days selected by
         const heatingE = heatingHours * (heating ? 0.068 : 0.815) * 7 * 16;
 
-        const powerE2020 =  0.1167
+        // const powerE2020 =  0.1167
+        const powerE2020 = 0.107019491552927
         let bandwidth;
         if (zoom) {
             bandwidth = camera ? 3.8 : .150;
