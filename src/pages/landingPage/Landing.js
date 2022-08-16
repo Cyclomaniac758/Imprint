@@ -1,16 +1,12 @@
-import './Home.css';
+import './Landing.css';
 import { Button, Divider, Typography } from '@mui/material';
 import { Container } from '@mui/system';
-import Logo from '../logo/Logo';
+import Logo from '../../logo/Logo';
 import React from "react";
 import { Link } from 'react-router-dom'
 
 
-function Home2() {
-
-    function buttonClick() {
-        
-    }
+function Landing() {
 
     return (
         <div className="App">
@@ -21,7 +17,7 @@ function Home2() {
                 <div>
                     <Typography variant='subtitle1' sx={{mt: '8vh', mb: '4vh'}}>Calculate your carbon emissions today, to make tomorrow better!</Typography>      
                     <Link to={'/calculator'} style={{ textDecoration: 'none' }}>
-                        <Button variant='contained' color='success' size='large' sx={{mb: '10vh'}} onClick={buttonClick}>START</Button>
+                        <Button variant='contained' color='success' size='large' sx={{mb: '10vh'}}>START</Button>
                     </Link>
                 </div>
                 <Divider/>
@@ -38,4 +34,4 @@ function Home2() {
     
 }
 
-export default Home2
+export default Landing;

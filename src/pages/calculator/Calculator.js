@@ -9,24 +9,7 @@ import FromHome from "../FromHome";
 import Stack from '@mui/material/Stack';
 import { Box } from "@mui/material";
 import LinearProgressWithLabel from "./ProgressBar";
-
-const commuteFactors = {
-    'Car-Petrol': 0.264656596607083,
-    'Car-Diesel': 0.270211945903452,
-    'Car-Electric': 0.0257236513893049,
-    'Car-Diesel Hybrid': 0.242225708649166,
-    'Car-Petrol Hybrid': 0.20139081670323,
-    'Car-Petrol Plug-in Hybrid': 0.0957093409748131, 
-    'Car-Diesel Plug-in Hybrid': 0.115722560779822,
-    'Bus': 0.155,
-    'Motorcycle <60cc': 0.0657125660708244,
-    'Motorcycle >60cc': 0.131425132141649,
-    'Rail': 0.019,
-    'Taxi': 0.224696773002809,
-    'Electric Scooter': 0,
-    'Electric Bicycle': 0.0010701949,
-    'Walking/Biking': 0
-}
+import {factors} from './Factors';
 
 function Calculator() {
     const navigate = useNavigate();
@@ -47,17 +30,105 @@ function Calculator() {
     const [connection, setConnection] = useState('');
     const [zoom, setZoom] = useState(1);
     const [heatingHours, setHeatingHours] = useState(0);
-    const [heating, setHeating] = useState(1);
+    const [heating, setHeating] = useState('Heatpump');
+
 
     function calculateResult() {
         let total = 0;
+        let fromOffice = 0;
 
         for (let vehicle in vehicleDays) {
-            total += distance * commuteFactors[vehicle] * vehicleDays[vehicle];
+            fromOffice += distance * factors.commuteFactors[vehicle] * vehicleDays[vehicle];
         }
 
-        total = total * 50;
-        navigate('/result', {state: {result: total.toFixed(3)}});
+        fromOffice = fromOffice * 50;
+        total = fromOffice;
+
+        let fromHome = 0;
+
+        //zoom bandwidth 3800mbps / 150kbps
+        //teams bandwidth  4000kbps / 76kbps
+        //time = hours * 3600
+        // power consumption from tech in Sapere
+        // 2020 power consumption emissions 0.1167
+
+        //heating heat pump .408 kg / day assumes 6hr
+        // .068 / hr
+        //heating electric .815 kg / day assumes 6hr
+        // 0.136 / hr
+        console.log(heatingHours)
+        console.log(heating)
+        console.log(connection);
+        console.log(factors.connectionFactors[connection])
+        console.log(hours)
+
+        //need to decide how many weeks for heating
+        //todo substitute 7 days in a week to number of days selected by
+        const heatingE = heatingHours * (factors.heatingFactors[heating]) * 7 * 16;
+
+        // const powerE2020 =  0.1167
+        const powerE2020 = 0.107019491552927
+        let bandwidth;
+        if (zoom) {
+            bandwidth = camera ? 3.8 : .150;
+        } else {
+            bandwidth = camera ? 4 : .076;
+        }
+        console.log(bandwidth)
+        const videoE = bandwidth * factors.connectionFactors[connection] * hours * 3600 * powerE2020;
+        console.log(heatingE);
+        console.log(videoE);
+        
+        fromHome = heatingE + (videoE * 7 * 50);
+
+        total += fromHome;
+
+
+        navigate('/result', {state: {result: total.toFixed(3), fromHome: fromHome.toFixed(3), fromOffice: fromOffice.toFixed(3)}});
+    }
+
+    const WeekBreakdownProps = {
+        page,
+        setPage,
+        daysFromOffice,
+        daysFromHome,
+        setDaysFromOffice,
+        setDaysFromHome,
+        setOfficeComplete,
+        setHomeComplete,
+        setProgress
+    }
+
+    const InTheOfficeProps = {
+        page,
+        setPage,
+        setOfficeComplete,
+        calculateResult,
+        homeComplete,
+        setProgress,
+        progress,
+        setDistance,
+        vehicles,
+        setVehicles,
+        vehicleDays,
+        setVehicleDays
+    }
+
+    const FromHomeProps = {
+        page,
+        setPage,
+        calculateResult,
+        officeComplete,
+        setProgress,
+        progress,
+        setHours,
+        setCamera,
+        camera,
+        setZoom,
+        connection,
+        setConnection,
+        setHeating,
+        setHeatingHours
     }
 
     return (
@@ -71,9 +142,9 @@ function Calculator() {
                 </Box>          
             </header>
             <Container sx={{textAlign: "center", height: '100vh', justifyContent: 'center'}}>
-                {(page === 1 || page === 2) && <WeekBreakdown page={page} setPage={setPage} daysFromOffice={daysFromOffice} daysFromHome={daysFromHome} setDaysFromOffice={setDaysFromOffice} setDaysFromHome={setDaysFromHome} setOfficeComplete={setOfficeComplete} setHomeComplete={setHomeComplete} setProgress={setProgress}/>}
-                {(page>2 && !officeComplete) && <InTheOffice page={page} setPage={setPage} setOfficeComplete={setOfficeComplete} calculateResult={calculateResult} homeComplete={homeComplete} setProgress={setProgress} progress={progress}/>}
-                {(officeComplete && page>2 && !homeComplete) && <FromHome page={page} setPage={setPage} calculateResult={calculateResult} officeComplete={officeComplete} setProgress={setProgress} progress={progress}/>}
+                {(page === 1 || page === 2) && <WeekBreakdown WeekBreakdownProps={WeekBreakdownProps}/>}
+                {(page>2 && !officeComplete) && <InTheOffice InTheOfficeProps={InTheOfficeProps}/>}
+                {(officeComplete && page>2 && !homeComplete) && <FromHome FromHomeProps={FromHomeProps}/>}
             </Container>
         </div>
     )

@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: row;
     margin-left: 5vh;
-    justify-content: center;
 }
 
 .page {

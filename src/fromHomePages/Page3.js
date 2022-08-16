@@ -96,9 +96,9 @@ function Page3(props) {
                             row
                             defaultValue={1}
                         >
-                            <FormControlLabel value={1} onChange={updateHeating} control={<Radio />} label="Heat Pump" />
-                            <FormControlLabel value={0} onChange={updateHeating} control={<Radio />} label="Electric Oil Heater" />
-                            <FormControlLabel value={2} onChange={updateHeating} control={<Radio />} label="Wood Stove" />
+                            <FormControlLabel value={'Heatpump'} onChange={updateHeating} control={<Radio />} label="Heat Pump" />
+                            <FormControlLabel value={'Electric'} onChange={updateHeating} control={<Radio />} label="Electric Oil Heater" />
+                            <FormControlLabel value={'Woodburner'} onChange={updateHeating} control={<Radio />} label="Wood Stove" />
                         </RadioGroup>
                     </Grid>
                 </Grid>
