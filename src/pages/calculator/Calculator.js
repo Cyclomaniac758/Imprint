@@ -36,54 +36,56 @@ function Calculator() {
     function calculateResult() {
         let total = 0;
         let fromOffice = 0;
-
-        for (let vehicle in vehicleDays) {
-            fromOffice += distance * factors.commuteFactors[vehicle] * vehicleDays[vehicle];
-        }
-
-        fromOffice = fromOffice * 50;
-        total = fromOffice;
-
         let fromHome = 0;
 
-        //zoom bandwidth 3800mbps / 150kbps
-        //teams bandwidth  4000kbps / 76kbps
-        //time = hours * 3600
-        // power consumption from tech in Sapere
-        // 2020 power consumption emissions 0.1167
+        if (daysFromOffice > 0) {
+            for (let vehicle in vehicleDays) {
+            fromOffice += distance * factors.commuteFactors[vehicle] * vehicleDays[vehicle];
+            }
 
-        //heating heat pump .408 kg / day assumes 6hr
-        // .068 / hr
-        //heating electric .815 kg / day assumes 6hr
-        // 0.136 / hr
-        console.log(heatingHours)
-        console.log(heating)
-        console.log(connection);
-        console.log(factors.connectionFactors[connection])
-        console.log(hours)
-
-        //need to decide how many weeks for heating
-        //todo substitute 7 days in a week to number of days selected by
-        const heatingE = heatingHours * (factors.heatingFactors[heating]) * 7 * 16;
-
-        // const powerE2020 =  0.1167
-        const powerE2020 = 0.107019491552927
-        let bandwidth;
-        if (zoom) {
-            bandwidth = camera ? 3.8 : .150;
-        } else {
-            bandwidth = camera ? 4 : .076;
+            fromOffice = fromOffice * 50;
+            total = fromOffice;
         }
-        console.log(bandwidth)
-        const videoE = bandwidth * factors.connectionFactors[connection] * hours * 3600 * powerE2020;
-        console.log(heatingE);
-        console.log(videoE);
+
+        if (daysFromHome > 0) {
+            //zoom bandwidth 3800mbps / 150kbps
+            //teams bandwidth  4000kbps / 76kbps
+            //time = hours * 3600
+            // power consumption from tech in Sapere
+            // 2020 power consumption emissions 0.1167
+
+            //heating heat pump .408 kg / day assumes 6hr
+            // .068 / hr
+            //heating electric .815 kg / day assumes 6hr
+            // 0.136 / hr
+            console.log(heatingHours)
+            console.log(heating)
+            console.log(connection);
+            console.log(factors.connectionFactors[connection])
+            console.log(hours)
+
+            //need to decide how many weeks for heating
+            //todo substitute 7 days in a week to number of days selected by
+            const heatingE = heatingHours * (factors.heatingFactors[heating]) * 7 * 16;
+
+            // const powerE2020 =  0.1167
+            const powerE2020 = 0.107019491552927
+            let bandwidth;
+            if (zoom) {
+                bandwidth = camera ? 3.8 : .150;
+            } else {
+                bandwidth = camera ? 4 : .076;
+            }
+            console.log(bandwidth)
+            const videoE = bandwidth * factors.connectionFactors[connection] * hours * 3600 * powerE2020;
+            console.log(heatingE);
+            console.log(videoE);
+            
+            fromHome = heatingE + (videoE * 7 * 50);
+
+            total += fromHome;
+        }
         
-        fromHome = heatingE + (videoE * 7 * 50);
-
-        total += fromHome;
-
-
         navigate('/result', {state: {result: total.toFixed(3), fromHome: fromHome.toFixed(3), fromOffice: fromOffice.toFixed(3)}});
     }
 
