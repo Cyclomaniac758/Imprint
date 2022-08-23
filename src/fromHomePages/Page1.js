@@ -75,7 +75,7 @@ function Page1(props) {
         <>
             <Box sx={{paddingTop: '50px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                 <AccessTimeIcon fontSize="large" sx={{color: '#116939'}}></AccessTimeIcon>
-                <Typography variant='h6' sx={{ml: '10px'}}>Select Average Time Spent In Virtual Meetings daily</Typography>
+                <Typography variant='h6' sx={{ml: '10px'}}>Select average time spent in online meetings when working from home</Typography>
             </Box>
             <Box sx={{paddingTop: '30px',flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <Box sx={{width: '50%'}}>

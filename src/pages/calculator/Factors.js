@@ -18,10 +18,10 @@ const commuteFactors = {
 
 // real factor values still needed
 const connectionFactors = {
-    'Fibre': .000001,
-    'VDSL': .000002,
-    'Fixed Wireless': .000003,
-    'HFC': .000004
+    'Fibre': .0191,
+    'VDSL': .0255,
+    'Fixed Wireless': .0105,
+    'HFC': .0233
 };
 
 const heatingFactors = {

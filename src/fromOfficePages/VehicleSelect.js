@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
+import { Tooltip } from '@mui/material';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -25,6 +26,8 @@ const vehicles = [
     'Car-Electric',
     'Car-Diesel Hybrid',
     'Car-Petrol Hybrid',
+    'Car-Petrol Plug-in Hybrid',
+    'Car-Diesel Plug-in Hybrid',
     'Bus',
     'Motorcycle <60cc',
     'Motorcycle >60cc',
@@ -58,33 +61,36 @@ function VehicleSelect(props) {
 
     return (
         <div>
-            <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel>Select mode/s</InputLabel>
-                <Select
-                    multiple
-                    value={props.vehicleNames}
-                    onChange={handleChange}
-                    input={<OutlinedInput label="Select mode/s" />}
-                    renderValue={(selected) => (
-                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                            {selected.map((value) => (
-                                <Chip key={value} label={value} />
-                            ))}
-                        </Box>
-                    )}
-                    MenuProps={MenuProps}
-                >
-                    {vehicles.map((vehicle) => (
-                        <MenuItem
-                            key={vehicle}
-                            value={vehicle}
-                            style={getStyles(vehicle, props.vehicleNames, theme)}
-                        >
-                            {vehicle}
-                        </MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
+            <Tooltip title="For example if you drive a petrol car to work some days, and take the bus on other days, select 'Car-Petrol' and 'Bus'" placement="right-start">
+                <FormControl sx={{ m: 1, width: 300 }}>
+                    <InputLabel>Select mode/s</InputLabel>
+                    <Select
+                        multiple
+                        value={props.vehicleNames}
+                        onChange={handleChange}
+                        input={<OutlinedInput label="Select mode/s" />}
+                        renderValue={(selected) => (
+                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                                {selected.map((value) => (
+                                    <Chip key={value} label={value} />
+                                ))}
+                            </Box>
+                        )}
+                        MenuProps={MenuProps}
+                    >
+                        {vehicles.map((vehicle) => (
+                            <MenuItem
+                                key={vehicle}
+                                value={vehicle}
+                                style={getStyles(vehicle, props.vehicleNames, theme)}
+                            >
+                                {vehicle}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+            </Tooltip>
+            
         </div>
     );
 }

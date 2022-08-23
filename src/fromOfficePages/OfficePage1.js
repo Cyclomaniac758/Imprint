@@ -18,7 +18,7 @@ function OfficePage1(props) {
         <>
             <Box sx={{paddingTop: '40px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                 <CommuteIcon fontSize='large' sx={{color:'#116939'}}/>
-                <Typography variant='h6' sx={{ml: '10px'}}>Enter Approximate Daily Commute Distance</Typography>
+                <Typography variant='h6' sx={{ml: '10px'}}>Enter your approximate daily commute distance</Typography>
                 
             </Box>
             <Typography variant='h6' sx={{ml: '10px'}}>(one way)</Typography>
@@ -27,8 +27,7 @@ function OfficePage1(props) {
                     <Grid item xs={12} sx={{flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <TextField
                             label="Distance"
-                            type="number"
-                            sx={{width: '12ch'}}
+                            sx={{width: '10ch'}}
                             InputLabelProps={{
                                 shrink: true,
                             }}

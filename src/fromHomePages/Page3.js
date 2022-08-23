@@ -6,6 +6,7 @@ import React from "react";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 function Page3(props) {
 
@@ -83,8 +84,8 @@ function Page3(props) {
     return (
         <>
             <Box sx={{paddingTop: '40px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                <LocalFireDepartmentIcon fontSize={'large'} sx={{color: '#116939'}}/>
-                <Typography variant='h6' sx={{ml: '10px'}}>Select Time Using Heating In Work Hours During Winter</Typography>
+                <AccessTimeIcon fontSize="large" sx={{color: '#116939'}}></AccessTimeIcon>
+                <Typography variant='h6' sx={{ml: '10px'}}>Select time using heating in work hours during winter</Typography>
             </Box>
             <Box sx={{paddingTop: '30px',flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <Grid container sx={{width: '60%'}}>
@@ -92,13 +93,17 @@ function Page3(props) {
                         <Slider defaultValue={0} min={0} max={8} marks={marks} step={.5} onChange={sliderChange}/>
                     </Grid>
                     <Grid item xs={12} sx={{mt: '30px', flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        <LocalFireDepartmentIcon fontSize={'large'} sx={{color: '#116939'}}/>
+                        <Typography variant='h6' sx={{ml: '10px'}}>Select heating technology</Typography>
+                    </Grid>
+                    <Grid item xs={12} sx={{mt: '30px', flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <RadioGroup
                             row
                             defaultValue={1}
                         >
-                            <FormControlLabel value={'Heatpump'} onChange={updateHeating} control={<Radio />} label="Heat Pump" />
-                            <FormControlLabel value={'Electric'} onChange={updateHeating} control={<Radio />} label="Electric Oil Heater" />
-                            <FormControlLabel value={'Woodburner'} onChange={updateHeating} control={<Radio />} label="Wood Stove" />
+                            <FormControlLabel value={'Heatpump'} onChange={updateHeating} control={<Radio />} label="Heatpump" />
+                            <FormControlLabel value={'Electric'} onChange={updateHeating} control={<Radio />} label="Electric heater" />
+                            <FormControlLabel value={'Woodburner'} onChange={updateHeating} control={<Radio />} label="Wood stove" />
                         </RadioGroup>
                     </Grid>
                 </Grid>

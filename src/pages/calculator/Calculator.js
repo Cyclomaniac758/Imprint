@@ -69,15 +69,15 @@ function Calculator() {
             const heatingE = heatingHours * (factors.heatingFactors[heating]) * 7 * 16;
 
             // const powerE2020 =  0.1167
-            const powerE2020 = 0.107019491552927
+            const powerE2020 = 0.120086279
             let bandwidth;
-            if (zoom) {
-                bandwidth = camera ? 3.8 : .150;
-            } else {
-                bandwidth = camera ? 4 : .076;
-            }
-            console.log(bandwidth)
-            const videoE = bandwidth * factors.connectionFactors[connection] * hours * 3600 * powerE2020;
+            // if (zoom) {
+            //     bandwidth = connection==='Fixed Wireless' ? (camera ? 3.8 : .150) : 1;
+            // } else {
+            //     bandwidth = connection==='Fixed Wireless' ? (camera ? 4 : .076) : 1;
+            // }
+            // console.log(bandwidth)
+            const videoE = factors.connectionFactors[connection] * hours * powerE2020;
             console.log(heatingE);
             console.log(videoE);
             
