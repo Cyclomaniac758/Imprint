@@ -86,7 +86,7 @@ function Calculator() {
             total += fromHome;
         }
         
-        navigate('/result', {state: {result: total.toFixed(3), fromHome: fromHome.toFixed(3), fromOffice: fromOffice.toFixed(3)}});
+        navigate('/result', {state: {result: Math.ceil(total), fromHome: Math.round(fromHome), fromOffice: Math.round(fromOffice)}});
     }
 
     const WeekBreakdownProps = {
