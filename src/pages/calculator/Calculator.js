@@ -147,7 +147,7 @@ function Calculator() {
                     </Stack> 
                 </Box>          
             </header>
-            <Container sx={{textAlign: "center", height: '100vh', justifyContent: 'center'}}>
+            <Container sx={{textAlign: "center", height: '100%', justifyContent: 'center'}}>
                 {(page === 1 || page === 2) && <WeekBreakdown WeekBreakdownProps={WeekBreakdownProps}/>}
                 {(page>2 && !officeComplete) && <InTheOffice InTheOfficeProps={InTheOfficeProps}/>}
                 {(officeComplete && page>2 && !homeComplete) && <FromHome FromHomeProps={FromHomeProps}/>}
