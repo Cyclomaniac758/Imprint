@@ -42,7 +42,7 @@ function OfficePage1(props) {
                 </Grid>
             </Box>
             <Box sx={{paddingTop: '30px'}}>
-                <Link href="https://www.google.com/maps" target="_blank">Google maps link</Link>
+                <Link href="https://www.google.com/maps" target="_blank">Check on Google maps</Link>
             </Box>
         </>
     )

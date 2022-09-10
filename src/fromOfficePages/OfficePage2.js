@@ -13,7 +13,7 @@ function OfficePage2(props) {
 
     return (
         <>
-            <MultiModeModal open={open} closeModal={closeModal}/>
+            <MultiModeModal open={open} closeModal={closeModal} vehicleNames={props.vehicles} setVehicleNames={props.setVehicles} multiVehicle={props.multiVehicle} setMultiVehicle={props.setMultiVehicle}/>
             <Box sx={{paddingTop: '40px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                 <CommuteIcon fontSize='large' sx={{color:'#116939'}}/>
                 <Typography variant='h6' sx={{ml: '10px'}}>Select travel mode/s used throughout the week</Typography>
@@ -27,7 +27,7 @@ function OfficePage2(props) {
             </Box>
             <Box sx={{mt: '30px'}}>
                <Link href='#' onClick={openModal}>
-                    I use multiple modes in one trip (TODO)
+                    {Object.keys(props.multiVehicle).length === 0 ? "I use two modes in one trip" : "Update multi mode trip"}
                 </Link> 
             </Box>
             

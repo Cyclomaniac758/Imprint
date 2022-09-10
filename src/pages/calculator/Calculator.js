@@ -24,10 +24,11 @@ function Calculator() {
     const [distance, setDistance] = useState(0);
     const [vehicles, setVehicles] = useState([]);
     const [vehicleDays, setVehicleDays] = useState({});
+    const [multiVehicle, setMultiVehicle] = useState({});
 
     const [hours, setHours] = useState(0);
     const [camera, setCamera] = useState(true);
-    const [connection, setConnection] = useState('');
+    const [connection, setConnection] = useState('Fibre');
     const [zoom, setZoom] = useState(1);
     const [heatingHours, setHeatingHours] = useState(0);
     const [heating, setHeating] = useState('Heatpump');
@@ -40,7 +41,15 @@ function Calculator() {
 
         if (daysFromOffice > 0) {
             for (let vehicle in vehicleDays) {
-            fromOffice += distance * factors.commuteFactors[vehicle] * vehicleDays[vehicle];
+                if (!vehicle.includes('+')) {
+                    fromOffice += distance * factors.commuteFactors[vehicle] * vehicleDays[vehicle];
+                } else {
+                    const twoModes = vehicle.split('+');
+                    for (let i in twoModes) {
+                        let mode = twoModes[i];
+                        fromOffice += (multiVehicle[mode] * factors.commuteFactors[mode] * vehicleDays[vehicle]);
+                    }
+                }
             }
 
             fromOffice = fromOffice * 50;
@@ -58,11 +67,6 @@ function Calculator() {
             // .068 / hr
             //heating electric .815 kg / day assumes 6hr
             // 0.136 / hr
-            console.log(heatingHours)
-            console.log(heating)
-            console.log(connection);
-            console.log(factors.connectionFactors[connection])
-            console.log(hours)
 
             //need to decide how many weeks for heating
             //todo substitute 7 days in a week to number of days selected by
@@ -78,8 +82,6 @@ function Calculator() {
             // }
             // console.log(bandwidth)
             const videoE = factors.connectionFactors[connection] * hours * powerE2020;
-            console.log(heatingE);
-            console.log(videoE);
             
             fromHome = heatingE + (videoE * 7 * 50);
 
@@ -113,7 +115,9 @@ function Calculator() {
         vehicles,
         setVehicles,
         vehicleDays,
-        setVehicleDays
+        setVehicleDays,
+        multiVehicle,
+        setMultiVehicle
     }
 
     const FromHomeProps = {

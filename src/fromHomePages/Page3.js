@@ -99,7 +99,7 @@ function Page3(props) {
                     <Grid item xs={12} sx={{mt: '30px', flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <RadioGroup
                             row
-                            defaultValue={1}
+                            defaultValue={'Heatpump'}
                         >
                             <FormControlLabel value={'Heatpump'} onChange={updateHeating} control={<Radio />} label="Heatpump" />
                             <FormControlLabel value={'Electric'} onChange={updateHeating} control={<Radio />} label="Electric heater" />

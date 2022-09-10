@@ -89,8 +89,7 @@ function VehicleSelect(props) {
                         ))}
                     </Select>
                 </FormControl>
-            </Tooltip>
-            
+            </Tooltip> 
         </div>
     );
 }

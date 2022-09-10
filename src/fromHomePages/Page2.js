@@ -75,7 +75,7 @@ function Page2(props) {
                                 onChange={updateConnection}
                             >
                                 <MenuItem value={'Fibre'}>Fibre (default)</MenuItem>
-                                <MenuItem value={'VDSL'}>VDSL</MenuItem>
+                                <MenuItem value={'VDSL'}>VDSL/ADSL/Copper</MenuItem>
                                 <MenuItem value={'Fixed Wireless'}>Fixed Wireless</MenuItem>
                                 <MenuItem value={'HFC'}>HFC</MenuItem>
                             </Select>

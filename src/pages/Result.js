@@ -25,7 +25,7 @@ function Result() {
             width: '80%',
             type: 'pie',
           },
-          labels: ["From Home", "From The Office"],
+          labels: ["Working From Home", "Working In The Office"],
           theme: {
             monochrome: {
               enabled: true,
@@ -53,8 +53,6 @@ function Result() {
             show: false
           }
         },
-      
-      
       };
 
     return (
