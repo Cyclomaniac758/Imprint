@@ -1,8 +1,8 @@
 import { Slider, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import './pages.css';
-import home2 from '../images/home2.jpg';
-import office from '../images/office.jpg'
+import '../pages.css';
+import home2 from '../../images/home2.jpg';
+import office from '../../images/office.jpg'
 import {Button} from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -95,7 +95,7 @@ function WeekBreakdown(props) {
                 <Container sx={{width: '50%', mt: '3vh'}}>
                     <Slider defaultValue={0} min={0} max={7} marks={marks} step={1} onChange={props.WeekBreakdownProps.page===1 ? updateDaysFromOFfice : updateDaysFromHome}/>
                 </Container>
-                {props.WeekBreakdownProps.page===2 && <Button variant='contained' color='secondary' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>}
+                {props.WeekBreakdownProps.page===2 && <Button variant='contained' color='success' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>}
                 <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{'NEXT'}<ArrowForwardIcon/></Button>
             </Container>
             <Container sx={{textAlign: 'left', ml: '25%'}}>

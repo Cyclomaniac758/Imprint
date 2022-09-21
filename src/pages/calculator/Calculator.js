@@ -3,15 +3,16 @@ import '../pages.css';
 import {Container} from "@mui/system";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import WeekBreakdown from "../WeekBreakdown";
-import InTheOffice from "../InTheOffice";
-import FromHome from "../FromHome";
+import WeekBreakdown from "./WeekBreakdown";
+import InTheOffice from "./InTheOffice";
+import FromHome from "./FromHome";
 import Stack from '@mui/material/Stack';
 import { Box } from "@mui/material";
 import LinearProgressWithLabel from "./ProgressBar";
 import {factors} from './Factors';
 
 function Calculator() {
+    // Parent component for the calculator, all the questions are children of this component.
     const navigate = useNavigate();
     const [page, setPage] = useState(1);
     const [progress, setProgress] = useState(10);

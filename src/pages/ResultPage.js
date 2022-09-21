@@ -17,6 +17,10 @@ function Result() {
         navigate('/');
     }
 
+    function restart() {
+        navigate('/calculator')
+    }
+
     const chart = {
           
         series: [state.fromHome, state.fromOffice],
@@ -63,9 +67,6 @@ function Result() {
             <Container sx={{textAlign: "center", justifyContent: 'center'}}>
                 <Grid container sx={{justifyContent: 'center'}}>
                     <Grid item xs={7}>
-                        {/* <Typography variant="h5" sx={{mt: '5%'}}>
-                            By working from home and in the office you emit
-                        </Typography> */}
                         <Divider sx={{mt: '10%'}}></Divider>
                         <Box sx={{ml: '10%', display: 'flex', flexDirection: 'row'}}>
                             <Typography variant="h5" sx={{lineHeight: '3'}}>
@@ -83,25 +84,13 @@ function Result() {
                             of carbon dioxide equivalent every year
                             </Typography> 
                         </Box>
-                        
-                        {/* <Box sx={{mt: '20px', display: 'flex', flexDirection: 'row'}}> */}
-                            {/* <Typography variant="h5" sx={{mt: '5%'}}>
-                                This is offset by the CO2 absorbed by
-                            </Typography> */}
-                            <Divider sx={{mt: '20px'}}></Divider>
-                            <Box sx={{ml: '10%', display: 'flex', flexDirection: 'row'}}>
-                                <Typography variant="h2" sx={{color:'#9c27b0', mr: '3%'}}>{((Math.ceil(state.result/21)))}</Typography>
-                                <Typography variant="h5" sx={{lineHeight: '3'}}>
-                                    trees need to be planted each year to offset this
-                                </Typography>   
-                            </Box>
-                            {/* <Typography variant="h5" sx={{}}>
-                                need to be planted to offset this
-                            </Typography> */}
-                        {/* </Box> */}
-                        {/* <Typography variant="h3" sx={{color:'#116939', mt: '3%'}}>
-                                Breakdown
-                        </Typography> */}
+                        <Divider sx={{mt: '20px'}}></Divider>
+                        <Box sx={{ml: '10%', display: 'flex', flexDirection: 'row'}}>
+                            <Typography variant="h2" sx={{color:'#116939', mr: '3%'}}>{((Math.ceil(state.result/21)))}</Typography>
+                            <Typography variant="h5" sx={{lineHeight: '3'}}>
+                                {state.result/21 > 1 ? "trees need" : "tree needs"} to be planted each year to offset this
+                            </Typography>   
+                        </Box>
                         <Divider sx={{mt: '10px'}}/>
                         <Box sx={{ml: '10%', mt: '20px', display: 'flex', flexDirection: 'row'}}>
                             <Typography variant="h5" sx={{mr: '10px'}}>
@@ -125,14 +114,17 @@ function Result() {
                                 kg
                             </Typography>
                         </Box>
-                        <Box sx={{textAlign: 'right', mt: '10%'}}>
-                            <Button variant='contained' color='success' size='large' sx={{ mt: '5%', minWidth: '15vw'}} onClick={goHome}>
-                                RESTART
-                            </Button>
-                        </Box>
                     </Grid>
                     <Grid item xs={5}>
                         <ReactApexChart options={chart.options} series={chart.series} type="pie" />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Button variant='contained' color='success' size='large' sx={{ m: '2vw', minWidth: '12vw'}} onClick={restart}>
+                            RESTART
+                        </Button>
+                        <Button variant='contained' color='success' size='large' sx={{ m: '2vw', minWidth: '12vw'}} onClick={goHome}>
+                            Home
+                        </Button>
                     </Grid>
                 </Grid>
             </Container>

@@ -1,10 +1,10 @@
-import './pages.css';
+import '../pages.css';
 import {Button, Typography} from "@mui/material";
-import office from "../images/office.jpg";
+import office from "../../images/office.jpg";
 import React from "react";
-import OfficePage1 from "../fromOfficePages/OfficePage1";
-import OfficePage2 from "../fromOfficePages/OfficePage2";
-import OfficePage3 from "../fromOfficePages/OfficePage3";
+import OfficePage1 from "./fromOfficePages/OfficePage1";
+import OfficePage2 from "./fromOfficePages/OfficePage2";
+import OfficePage3 from "./fromOfficePages/OfficePage3";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
@@ -42,7 +42,7 @@ function InTheOffice(props) {
             {props.InTheOfficeProps.page === 3 && <OfficePage1 setDistance={props.InTheOfficeProps.setDistance}/>}
             {props.InTheOfficeProps.page === 4 && <OfficePage2 vehicles={props.InTheOfficeProps.vehicles} setVehicles={props.InTheOfficeProps.setVehicles} multiVehicle={props.InTheOfficeProps.multiVehicle} setMultiVehicle={props.InTheOfficeProps.setMultiVehicle}/>}
             {props.InTheOfficeProps.page === 5 && <OfficePage3 vehicles={props.InTheOfficeProps.vehicles} setVehicles={props.InTheOfficeProps.setVehicles} vehicleDays={props.InTheOfficeProps.vehicleDays} setVehicleDays={props.InTheOfficeProps.setVehicleDays}/>}
-            <Button variant='contained' color='secondary' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>
+            <Button variant='contained' color='success' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>
             <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{(props.InTheOfficeProps.homeComplete&&props.InTheOfficeProps.page===5) ? 'CALCULATE' : 'NEXT'}<ArrowForwardIcon/></Button>
         </div>
     )
