@@ -41,7 +41,7 @@ function InTheOffice(props) {
             <img className="image" src={office} height='175px' width='auto' alt="logo"/>
             {props.InTheOfficeProps.page === 3 && <OfficePage1 setDistance={props.InTheOfficeProps.setDistance}/>}
             {props.InTheOfficeProps.page === 4 && <OfficePage2 vehicles={props.InTheOfficeProps.vehicles} setVehicles={props.InTheOfficeProps.setVehicles} multiVehicle={props.InTheOfficeProps.multiVehicle} setMultiVehicle={props.InTheOfficeProps.setMultiVehicle}/>}
-            {props.InTheOfficeProps.page === 5 && <OfficePage3 vehicles={props.InTheOfficeProps.vehicles} setVehicles={props.InTheOfficeProps.setVehicles} vehicleDays={props.InTheOfficeProps.vehicleDays} setVehicleDays={props.InTheOfficeProps.setVehicleDays}/>}
+            {props.InTheOfficeProps.page === 5 && <OfficePage3 vehicles={props.InTheOfficeProps.vehicles} setVehicles={props.InTheOfficeProps.setVehicles} vehicleDays={props.InTheOfficeProps.vehicleDays} setVehicleDays={props.InTheOfficeProps.setVehicleDays} daysFromOffice={props.InTheOfficeProps.daysFromOffice}/>}
             <Button variant='contained' color='success' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={backButtonClick}><ArrowBackIcon/>{'BACK'}</Button>
             <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={buttonClick}>{(props.InTheOfficeProps.homeComplete&&props.InTheOfficeProps.page===5) ? 'CALCULATE' : 'NEXT'}<ArrowForwardIcon/></Button>
         </div>

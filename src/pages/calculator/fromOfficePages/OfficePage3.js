@@ -23,7 +23,10 @@ function OfficePage3(props) {
         <>
             <Box sx={{paddingTop: '40px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                 <CommuteIcon fontSize='large' sx={{color:'#116939'}}/>
-                <Typography variant='h6' sx={{ml: '10px'}}>For each vehicle mode selected - enter number of days</Typography>
+                <Typography variant='h6' sx={{ml: '10px'}}>For each vehicle mode selected - enter number of days used</Typography>
+            </Box>
+            <Box sx={{}}>
+                <Typography variant='subtitle1' sx={{mt: '10px'}}>You selected {props.daysFromOffice} days total working in the office</Typography>
             </Box>
             <Box sx={{paddingTop: '30px',flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <Grid container sx={{width: '60%'}}>
@@ -31,7 +34,6 @@ function OfficePage3(props) {
                         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                             {props.vehicles.map((value) => {
                                 const labelId = `checkbox-list-label-${value}`;
-
                                 return (
                                     <ListItem
                                         key={value}

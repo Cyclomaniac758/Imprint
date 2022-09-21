@@ -118,7 +118,8 @@ function Calculator() {
         vehicleDays,
         setVehicleDays,
         multiVehicle,
-        setMultiVehicle
+        setMultiVehicle,
+        daysFromOffice
     }
 
     const FromHomeProps = {
