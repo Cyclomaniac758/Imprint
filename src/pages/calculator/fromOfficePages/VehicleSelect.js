@@ -63,12 +63,12 @@ function VehicleSelect(props) {
         <div>
             <Tooltip title="For example if you drive a petrol car to work some days, and take the bus on other days, select 'Car-Petrol' and 'Bus'" placement="right-start">
                 <FormControl sx={{ m: 1, width: 300 }}>
-                    <InputLabel>Select mode/s</InputLabel>
+                    <InputLabel>Select multiple modes if needed</InputLabel>
                     <Select
                         multiple
                         value={props.vehicleNames}
                         onChange={handleChange}
-                        input={<OutlinedInput label="Select mode/s" />}
+                        input={<OutlinedInput label="Select multiple modes if needed" />}
                         renderValue={(selected) => (
                             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                                 {selected.map((value) => (

@@ -39,7 +39,7 @@ function FromHome(props) {
 
     return (
         <div>
-            <Typography variant="subtitle2">
+            <Typography variant="h5">
                 Working From Home
             </Typography>
             <img className="image" src={home2} height='175px' width='auto' alt="logo"  />

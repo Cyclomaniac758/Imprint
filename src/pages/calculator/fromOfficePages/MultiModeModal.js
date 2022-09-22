@@ -250,7 +250,7 @@ function MultiModeModal(props) {
                         </Box>
                     </Grid>
                     <Grid item xs={12}>
-                        <Button variant='contained' color='secondary' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={props.closeModal}>{'CANCEL'}</Button>
+                        <Button variant='contained' color='success' size='large' sx={{mt: '50px  ', mr: '20px'}} onClick={props.closeModal}>{'CANCEL'}</Button>
                         <Button variant='contained' color='success' size='large' sx={{mt: '50px  '}} onClick={create} disabled={disableCreate}>{'CREATE'}</Button>
                     </Grid>
                 </Grid>

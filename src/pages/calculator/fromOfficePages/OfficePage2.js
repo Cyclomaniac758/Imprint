@@ -1,5 +1,5 @@
 import {Box} from "@mui/system";
-import {Link, Typography} from "@mui/material";
+import {Link, Tooltip, Typography} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import React from "react";
 import CommuteIcon from '@mui/icons-material/Commute';
@@ -26,9 +26,12 @@ function OfficePage2(props) {
                 </Grid>
             </Box>
             <Box sx={{mt: '30px'}}>
-               <Link href='#' onClick={openModal}>
-                    {Object.keys(props.multiVehicle).length === 0 ? "I use two modes in one trip" : "Update multi mode trip"}
-                </Link> 
+                <Tooltip title='Select if you use more than one travel mode in a single trip to work. e.g. Drive to the bus stop, then take the bus'>
+                    <Link href='#' onClick={openModal}>
+                        {Object.keys(props.multiVehicle).length === 0 ? "I use two modes in one trip" : "Update multi mode trip"}
+                    </Link> 
+                </Tooltip>
+               
             </Box>
             
         </>

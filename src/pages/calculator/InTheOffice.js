@@ -35,7 +35,7 @@ function InTheOffice(props) {
 
     return (
         <div>
-            <Typography variant="subtitle2">
+            <Typography variant="h5">
                 Working In The Office
             </Typography>
             <img className="image" src={office} height='175px' width='auto' alt="logo"/>
