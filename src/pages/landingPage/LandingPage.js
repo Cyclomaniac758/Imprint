@@ -1,4 +1,4 @@
-import "./Landing.css";
+import "./LandingPage.css";
 import { Button, Divider, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import Logo from "../../logo/Logo";

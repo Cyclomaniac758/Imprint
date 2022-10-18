@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Landing from "./pages/landingPage/Landing";
-import Result from "./pages/ResultPage";
+import Landing from "./pages/landingPage/LandingPage";
+import Result from "./pages/resultPage/ResultPage";
 import Calculator from "./pages/calculator/Calculator";
 import { useState } from "react";
 

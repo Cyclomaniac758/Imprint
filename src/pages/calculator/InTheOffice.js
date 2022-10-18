@@ -80,8 +80,8 @@ function InTheOffice(props) {
         <OfficePage3
           vehicles={props.InTheOfficeProps.vehicles}
           setVehicles={props.InTheOfficeProps.setVehicles}
-          vehicleDays={props.InTheOfficeProps.vehicleDays}
-          setVehicleDays={props.InTheOfficeProps.setVehicleDays}
+          vehicleDays={props.InTheOfficeProps.daysPerTravelMode}
+          setVehicleDays={props.InTheOfficeProps.setDaysPerTravelMode}
           daysFromOffice={props.InTheOfficeProps.daysFromOffice}
         />
       )}

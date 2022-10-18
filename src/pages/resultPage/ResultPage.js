@@ -1,5 +1,5 @@
-import "./pages.css";
-import Logo from "../logo/Logo";
+import "../pages.css";
+import Logo from "../../logo/Logo";
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -69,10 +69,11 @@ function Result(props) {
       <header className="heading">
         <Logo />
       </header>
+      {/* <Divider/> */}
       <Container sx={{ textAlign: "center", justifyContent: "center" }}>
         <Grid container sx={{ justifyContent: "center" }}>
           <Grid item xs={7}>
-            <Divider sx={{ mt: "10%" }}></Divider>
+            <Divider sx={{ }}></Divider>
             <Box sx={{ ml: "10%", display: "flex", flexDirection: "row" }}>
               <Typography variant="h5" sx={{ lineHeight: "3" }}>
                 you are emitting
@@ -141,6 +142,7 @@ function Result(props) {
             </Box>
           </Grid>
           <Grid item xs={5}>
+            <Divider sx={{ }}></Divider>
             <ReactApexChart
               options={chart.options}
               series={chart.series}

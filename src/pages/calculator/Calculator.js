@@ -27,7 +27,7 @@ function Calculator(props) {
 
   const [distance, setDistance] = useState(0);
   const [vehicles, setVehicles] = useState([]);
-  const [vehicleDays, setVehicleDays] = useState({});
+  const [daysPerTravelMode, setDaysPerTravelMode] = useState({});
   const [multiVehicle, setMultiVehicle] = useState({});
 
   const [hours, setHours] = useState(0);
@@ -45,10 +45,10 @@ function Calculator(props) {
     let fromHome = 0;
 
     if (daysFromOffice > 0) {
-      for (let vehicle in vehicleDays) {
+      for (let vehicle in daysPerTravelMode) {
         if (!vehicle.includes("+")) {
           fromOffice +=
-            distance * factors.commuteFactors[vehicle] * vehicleDays[vehicle];
+            distance * factors.commuteFactors[vehicle] * daysPerTravelMode[vehicle];
         } else {
           const twoModes = vehicle.split("+");
           for (let i in twoModes) {
@@ -56,7 +56,7 @@ function Calculator(props) {
             fromOffice +=
               multiVehicle[mode] *
               factors.commuteFactors[mode] *
-              vehicleDays[vehicle];
+              daysPerTravelMode[vehicle];
           }
         }
       }
@@ -136,8 +136,8 @@ function Calculator(props) {
     setDistance,
     vehicles,
     setVehicles,
-    vehicleDays,
-    setVehicleDays,
+    daysPerTravelMode,
+    setDaysPerTravelMode,
     multiVehicle,
     setMultiVehicle,
     daysFromOffice,
