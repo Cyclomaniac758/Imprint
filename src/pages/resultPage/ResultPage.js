@@ -8,23 +8,48 @@ import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
 import ReactApexChart from "react-apexcharts";
 import { Divider, Grid } from "@mui/material";
+import { StoreContext } from "../../data/Store";
+import { useContext } from "react";
+
 // import Timer from "../utilities/Timer";
 
-function Result(props) {
+function Result() {
+  const props = useContext(StoreContext);
   const { state } = useLocation();
   const navigate = useNavigate();
   // const timer = new Timer(props.usernum);
 
   function goHome() {
     // timer.pagetime(" results page");
-    props.setusernum(props.usernum + 1);
+    // props.setusernum(props.usernum + 1);
+    resetState();
     navigate("/");
   }
 
   function restart() {
     // timer.pagetime("results page");
-    props.setusernum(props.usernum + 1);
+    // props.setusernum(props.usernum + 1);
+    resetState();
     navigate("/calculator");
+  }
+
+  function resetState() {
+    props.setProgress(10);
+    props.setPage(1);
+    props.setDaysFromOffice(0);
+    props.setDaysFromHome(0);
+    props.setOfficeComplete(false);
+    props.setHomeComplete(false);
+    props.setDistance(0);
+    props.setVehicles([]);
+    props.setDaysPerTravelMode({});
+    props.setMultiVehicle({});
+    props.setHours(0);
+    props.setCamera(true);
+    props.setConnection("Fibre");
+    props.setZoom(1);
+    props.setHeatingHours(0);
+    props.setHeating("Heatpump");
   }
 
   const chart = {

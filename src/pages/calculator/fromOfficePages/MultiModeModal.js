@@ -66,9 +66,9 @@ function getStyles(name, vehicleName, theme) {
 
 function MultiModeModal(props) {
   const theme = useTheme();
-  const [mode1, setMode1] = useState([]);
+  const [mode1, setMode1] = useState([""]);
   const [dist1, setDist1] = useState(0);
-  const [mode2, setMode2] = useState([]);
+  const [mode2, setMode2] = useState([""]);
   const [dist2, setDist2] = useState(0);
   const [disableCreate, setDisableCreate] = useState(true);
 
@@ -78,7 +78,6 @@ function MultiModeModal(props) {
     } = event;
     setMode1([value]);
     canCreate(value, mode2, dist1, dist2);
-    console.log(mode1);
   };
 
   const changeDist1 = (event) => {
@@ -87,7 +86,6 @@ function MultiModeModal(props) {
     } = event;
     setDist1(value);
     canCreate(mode1, mode2, value, dist2);
-    console.log(dist1);
   };
 
   const changeMode2 = (event) => {
@@ -96,7 +94,6 @@ function MultiModeModal(props) {
     } = event;
     setMode2([value]);
     canCreate(mode1, value, dist1, dist2);
-    console.log(mode2);
   };
 
   const changeDist2 = (event) => {
@@ -105,7 +102,6 @@ function MultiModeModal(props) {
     } = event;
     setDist2(value);
     canCreate(mode1, mode2, dist1, value);
-    console.log(dist2);
   };
 
   function create() {
@@ -157,14 +153,12 @@ function MultiModeModal(props) {
               <FormControl sx={{ m: 0, width: 200 }} required>
                 <InputLabel>Select first mode</InputLabel>
                 <Select
-                  value={mode1}
+                  value={mode1[0]}
                   onChange={changeMode1}
                   input={<OutlinedInput label="Select first mode" />}
                   renderValue={(selected) => (
                     <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                      {selected.map((value) => (
-                        <Chip key={value} label={value} />
-                      ))}
+                      <Chip key={selected} label={selected} />
                     </Box>
                   )}
                   MenuProps={MenuProps}
@@ -208,14 +202,12 @@ function MultiModeModal(props) {
               <FormControl sx={{ width: 200 }} required>
                 <InputLabel>Select second mode</InputLabel>
                 <Select
-                  value={mode2}
+                  value={mode2[0]}
                   onChange={changeMode2}
                   input={<OutlinedInput label="Select second mode" />}
                   renderValue={(selected) => (
                     <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                      {selected.map((value) => (
-                        <Chip key={value} label={value} />
-                      ))}
+                      <Chip key={selected} label={selected} />
                     </Box>
                   )}
                   MenuProps={MenuProps}

@@ -1,41 +1,43 @@
 import Logo from "../../logo/Logo";
 import "../pages.css";
 import { Container } from "@mui/system";
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import WeekBreakdown from "./WeekBreakdown";
-import InTheOffice from "./InTheOffice";
-import FromHome from "./FromHome";
+import InTheOffice from "./fromOfficePages/InTheOffice";
+import FromHome from "./fromHomePages/FromHome";
 import Stack from "@mui/material/Stack";
 import { Box } from "@mui/material";
 import LinearProgressWithLabel from "./ProgressBar";
-import { factors } from "./Factors";
+import { factors } from "../../data/Factors";
+import { StoreContext } from "../../data/Store";
 // import Timer from "../../utilities/Timer";
 
-function Calculator(props) {
+function Calculator() {
   // Parent component for the calculator, all the questions are children of this component.
   // Timer object for user study
   // const [timer] = useState(new Timer(props.usernum));
   const navigate = useNavigate();
-  const [page, setPage] = useState(1);
-  const [progress, setProgress] = useState(10);
+  const props = useContext(StoreContext);
+  // const [page, setPage] = useState(1);
+  // const [progress, setProgress] = useState(10);
 
-  const [daysFromOffice, setDaysFromOffice] = useState(0);
-  const [daysFromHome, setDaysFromHome] = useState(0);
-  const [officeComplete, setOfficeComplete] = useState(false);
-  const [homeComplete, setHomeComplete] = useState(false);
+  // const [daysFromOffice, setDaysFromOffice] = useState(0);
+  // const [daysFromHome, setDaysFromHome] = useState(0);
+  // const [officeComplete, setOfficeComplete] = useState(false);
+  // const [homeComplete, setHomeComplete] = useState(false);
 
-  const [distance, setDistance] = useState(0);
-  const [vehicles, setVehicles] = useState([]);
-  const [daysPerTravelMode, setDaysPerTravelMode] = useState({});
-  const [multiVehicle, setMultiVehicle] = useState({});
+  // const [distance, setDistance] = useState(0);
+  // const [vehicles, setVehicles] = useState([]);
+  // const [daysPerTravelMode, setDaysPerTravelMode] = useState({});
+  // const [multiVehicle, setMultiVehicle] = useState({});
 
-  const [hours, setHours] = useState(0);
-  const [camera, setCamera] = useState(true);
-  const [connection, setConnection] = useState("Fibre");
-  const [zoom, setZoom] = useState(1);
-  const [heatingHours, setHeatingHours] = useState(0);
-  const [heating, setHeating] = useState("Heatpump");
+  // const [hours, setHours] = useState(0);
+  // const [camera, setCamera] = useState(true);
+  // const [connection, setConnection] = useState("Fibre");
+  // const [zoom, setZoom] = useState(1);
+  // const [heatingHours, setHeatingHours] = useState(0);
+  // const [heating, setHeating] = useState("Heatpump");
 
   function calculateResult() {
     // timer.calculatetotal(); // timer functionality
@@ -44,19 +46,19 @@ function Calculator(props) {
     let fromOffice = 0;
     let fromHome = 0;
 
-    if (daysFromOffice > 0) {
-      for (let vehicle in daysPerTravelMode) {
+    if (props.daysFromOffice > 0) {
+      for (let vehicle in props.daysPerTravelMode) {
         if (!vehicle.includes("+")) {
           fromOffice +=
-            distance * factors.commuteFactors[vehicle] * daysPerTravelMode[vehicle];
+            props.distance * factors.commuteFactors[vehicle] * props.daysPerTravelMode[vehicle];
         } else {
           const twoModes = vehicle.split("+");
           for (let i in twoModes) {
             let mode = twoModes[i];
-            fromOffice +=
-              multiVehicle[mode] *
+            props.fromOffice +=
+              props.multiVehicle[mode] *
               factors.commuteFactors[mode] *
-              daysPerTravelMode[vehicle];
+              props.daysPerTravelMode[vehicle];
           }
         }
       }
@@ -65,7 +67,7 @@ function Calculator(props) {
       total = fromOffice;
     }
 
-    if (daysFromHome > 0) {
+    if (props.daysFromHome > 0) {
       //zoom bandwidth 3800mbps / 150kbps
       //teams bandwidth  4000kbps / 76kbps
       //time = hours * 3600
@@ -80,11 +82,11 @@ function Calculator(props) {
       //need to decide how many weeks for heating
       //todo substitute 7 days in a week to number of days selected by
       const heatingE =
-        heatingHours * factors.heatingFactors[heating] * daysFromHome * 16;
+        props.heatingHours * factors.heatingFactors[props.heating] * props.daysFromHome * 16;
 
       // const powerE2020 =  0.1167
       const powerE2020 = factors.electricityFactor;
-      let bandwidth;
+      // let bandwidth;
       // if (zoom) {
       //     bandwidth = connection==='Fixed Wireless' ? (camera ? 3.8 : .150) : 1;
       // } else {
@@ -92,10 +94,10 @@ function Calculator(props) {
       // }
       // console.log(bandwidth)
       const videoE =
-        factors.connectionFactors[connection] *
-        hours *
+        factors.connectionFactors[props.connection] *
+        props.hours *
         powerE2020 *
-        daysFromHome *
+        props.daysFromHome *
         50;
 
       fromHome = heatingE + videoE;
@@ -105,63 +107,63 @@ function Calculator(props) {
 
     navigate("/result", {
       state: {
-        result: Math.ceil(total),
-        fromHome: Math.round(fromHome),
-        fromOffice: Math.round(fromOffice),
+        result: Math.ceil(Math.ceil(fromHome)+Math.ceil(fromOffice)),
+        fromHome: Math.ceil(fromHome),
+        fromOffice: Math.ceil(fromOffice),
       },
     });
   }
 
-  const WeekBreakdownProps = {
-    page,
-    setPage,
-    daysFromOffice,
-    daysFromHome,
-    setDaysFromOffice,
-    setDaysFromHome,
-    setOfficeComplete,
-    setHomeComplete,
-    setProgress,
-    // timer,
-  };
+  // const WeekBreakdownProps = {
+  //   page,
+  //   setPage,
+  //   daysFromOffice,
+  //   daysFromHome,
+  //   setDaysFromOffice,
+  //   setDaysFromHome,
+  //   setOfficeComplete,
+  //   setHomeComplete,
+  //   setProgress,
+  //   // timer,
+  // };
 
-  const InTheOfficeProps = {
-    page,
-    setPage,
-    setOfficeComplete,
-    calculateResult,
-    homeComplete,
-    setProgress,
-    progress,
-    setDistance,
-    vehicles,
-    setVehicles,
-    daysPerTravelMode,
-    setDaysPerTravelMode,
-    multiVehicle,
-    setMultiVehicle,
-    daysFromOffice,
-    // timer,
-  };
+  // const InTheOfficeProps = {
+  //   page,
+  //   setPage,
+  //   setOfficeComplete,
+  //   calculateResult,
+  //   homeComplete,
+  //   setProgress,
+  //   progress,
+  //   setDistance,
+  //   vehicles,
+  //   setVehicles,
+  //   daysPerTravelMode,
+  //   setDaysPerTravelMode,
+  //   multiVehicle,
+  //   setMultiVehicle,
+  //   daysFromOffice,
+  //   // timer,
+  // };
 
-  const FromHomeProps = {
-    page,
-    setPage,
-    calculateResult,
-    officeComplete,
-    setOfficeComplete,
-    setProgress,
-    progress,
-    setHours,
-    setCamera,
-    camera,
-    setZoom,
-    connection,
-    setConnection,
-    setHeating,
-    setHeatingHours,
-    // timer,
-  };
+  // const FromHomeProps = {
+  //   page,
+  //   setPage,
+  //   calculateResult,
+  //   officeComplete,
+  //   setOfficeComplete,
+  //   setProgress,
+  //   progress,
+  //   setHours,
+  //   setCamera,
+  //   camera,
+  //   setZoom,
+  //   connection,
+  //   setConnection,
+  //   setHeating,
+  //   setHeatingHours,
+  //   // timer,
+  // };
 
   return (
     <div className="page">
@@ -172,21 +174,21 @@ function Calculator(props) {
             sx={{ width: "80%", color: "grey.500", m: "auto auto" }}
             spacing={2}
           >
-            <LinearProgressWithLabel value={progress} />
+            <LinearProgressWithLabel value={props.progress} />
           </Stack>
         </Box>
       </header>
       <Container
         sx={{ textAlign: "center", height: "100%", justifyContent: "center" }}
       >
-        {(page === 1 || page === 2) && (
-          <WeekBreakdown WeekBreakdownProps={WeekBreakdownProps} />
+        {(props.page === 1 || props.page === 2) && (
+          <WeekBreakdown/>
         )}
-        {page > 2 && !officeComplete && (
-          <InTheOffice InTheOfficeProps={InTheOfficeProps} />
+        {props.page > 2 && !props.officeComplete && (
+          <InTheOffice calculateResult={calculateResult}/>
         )}
-        {officeComplete && page > 2 && !homeComplete && (
-          <FromHome FromHomeProps={FromHomeProps} />
+        {props.officeComplete && props.page > 2 && !props.homeComplete && (
+          <FromHome calculateResult={calculateResult}/>
         )}
       </Container>
     </div>

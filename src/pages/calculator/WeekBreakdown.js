@@ -6,17 +6,22 @@ import office from "../../images/office.jpg";
 import { Button } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { StoreContext } from "../../data/Store";
+import { useContext } from "react";
 
 import React from "react";
 
-function WeekBreakdown(props) {
+function WeekBreakdown() {
+
+  const props = useContext(StoreContext);
+
   function updateDaysFromOFfice(event) {
-    props.WeekBreakdownProps.setDaysFromOffice(event.target.value);
-    props.WeekBreakdownProps.setDaysFromHome(event.target.value);
+    props.setDaysFromHome(event.target.value);
+    props.setDaysFromOffice(event.target.value);
   }
 
   function updateDaysFromHome(event) {
-    props.WeekBreakdownProps.setDaysFromHome(event.target.value);
+    props.setDaysFromHome(event.target.value);
   }
 
   const marks = [
@@ -55,31 +60,31 @@ function WeekBreakdown(props) {
   ];
 
   function buttonClick() {
-    if (props.WeekBreakdownProps.daysFromOffice === 0) {
-      props.WeekBreakdownProps.setOfficeComplete(true);
+    if (props.daysFromOffice === 0) {
+      props.setOfficeComplete(true);
     } else {
-      props.WeekBreakdownProps.setOfficeComplete(false);
+      props.setOfficeComplete(false);
     }
     if (
-      props.WeekBreakdownProps.daysFromHome === 0 &&
-      props.WeekBreakdownProps.page > 1
+      props.daysFromHome === 0 &&
+      props.page > 1
     ) {
-      props.WeekBreakdownProps.setHomeComplete(true);
+      props.setHomeComplete(true);
     }
-    if (props.WeekBreakdownProps.page === 1) {
-      // props.WeekBreakdownProps.timer.takeduration("week breakdown page 1");
-      props.WeekBreakdownProps.setProgress(20);
+    if (props.page === 1) {
+      // props.timer.takeduration("week breakdown page 1");
+      props.setProgress(20);
     } else {
-      // props.WeekBreakdownProps.timer.takeduration("week breakdown page 2");
-      props.WeekBreakdownProps.setProgress(50);
+      // props.timer.takeduration("week breakdown page 2");
+      props.setProgress(50);
     }
-    props.WeekBreakdownProps.setPage(props.WeekBreakdownProps.page + 1);
+    props.setPage(props.page + 1);
   }
 
   function backButtonClick() {
     // props.WeekBreakdownProps.timer.incrementback();
-    props.WeekBreakdownProps.setPage(props.WeekBreakdownProps.page - 1);
-    props.WeekBreakdownProps.setProgress(10);
+    props.setPage(props.page - 1);
+    props.setProgress(10);
   }
 
   return (
@@ -90,20 +95,20 @@ function WeekBreakdown(props) {
         </Typography>
         <Container sx={{ width: "300px", height: "185" }}>
           <Typography variant="subtitle2" sx={{ textAlign: "center" }}>
-            {props.WeekBreakdownProps.page === 1
+            {props.page === 1
               ? "working from the office"
               : "working from home"}
           </Typography>
           <img
             className="image"
-            src={props.WeekBreakdownProps.page === 1 ? office : home2}
+            src={props.page === 1 ? office : home2}
             height="175px"
             width="auto"
             alt="logo"
           />
         </Container>
         <Typography variant="subtitle1" sx={{ mt: "3vh" }}>
-          {props.WeekBreakdownProps.page === 1
+          {props.page === 1
             ? "Select number of days working in the office*"
             : "Select number of days working from home*"}
         </Typography>
@@ -116,16 +121,16 @@ function WeekBreakdown(props) {
             step={1}
             sx={{ mb: "50px" }}
             onChange={
-              props.WeekBreakdownProps.page === 1
+              (props.page === 1
                 ? updateDaysFromOFfice
-                : updateDaysFromHome
+                : updateDaysFromHome)
             }
           />
           <Typography variant="subtitle4" color="#116939">
             *Include mixed days where you work both from home and in the office
           </Typography>
         </Container>
-        {props.WeekBreakdownProps.page === 2 && (
+        {props.page === 2 && (
           <Button
             variant="contained"
             color="success"
