@@ -1,21 +1,23 @@
 .heading {
-    text-align: left;
-    display: flex;
-    flex-direction: row;
-    margin-left: 5vh;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  margin-left: 5vw;
 }
 
 .page {
-    height: auto;
+  height: auto;
 }
 
-html {background-color: #F9F9F9}
+html {
+  background-color: #f9f9f9;
+}
 
 .image {
-    border-radius: 8px;
+  border-radius: 8px;
 }
 
 .css-1p8520q-MuiContainer-root {
-   height: 0 !important;
-   text-align: center;
+  height: 0 !important;
+  text-align: center;
 }
