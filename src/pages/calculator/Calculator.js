@@ -10,11 +10,12 @@ import Stack from "@mui/material/Stack";
 import { Box } from "@mui/material";
 import LinearProgressWithLabel from "./ProgressBar";
 import { factors } from "./Factors";
-import Timer from "../../utilities/Timer";
+// import Timer from "../../utilities/Timer";
 
 function Calculator(props) {
   // Parent component for the calculator, all the questions are children of this component.
-  const [timer, setTimer] = useState(new Timer(props.usernum));
+  // Timer object for user study
+  // const [timer] = useState(new Timer(props.usernum));
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [progress, setProgress] = useState(10);
@@ -37,8 +38,8 @@ function Calculator(props) {
   const [heating, setHeating] = useState("Heatpump");
 
   function calculateResult() {
-    timer.calculatetotal();
-    timer.download("calculation.txt");
+    // timer.calculatetotal(); // timer functionality
+    // timer.download("calculation.txt");
     let total = 0;
     let fromOffice = 0;
     let fromHome = 0;
@@ -121,7 +122,7 @@ function Calculator(props) {
     setOfficeComplete,
     setHomeComplete,
     setProgress,
-    timer,
+    // timer,
   };
 
   const InTheOfficeProps = {
@@ -140,7 +141,7 @@ function Calculator(props) {
     multiVehicle,
     setMultiVehicle,
     daysFromOffice,
-    timer,
+    // timer,
   };
 
   const FromHomeProps = {
@@ -159,7 +160,7 @@ function Calculator(props) {
     setConnection,
     setHeating,
     setHeatingHours,
-    timer,
+    // timer,
   };
 
   return (

@@ -8,21 +8,21 @@ import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
 import ReactApexChart from "react-apexcharts";
 import { Divider, Grid } from "@mui/material";
-import Timer from "../utilities/Timer";
+// import Timer from "../utilities/Timer";
 
 function Result(props) {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const timer = new Timer(props.usernum);
+  // const timer = new Timer(props.usernum);
 
   function goHome() {
-    timer.pagetime(" results page");
+    // timer.pagetime(" results page");
     props.setusernum(props.usernum + 1);
     navigate("/");
   }
 
   function restart() {
-    timer.pagetime("results page");
+    // timer.pagetime("results page");
     props.setusernum(props.usernum + 1);
     navigate("/calculator");
   }

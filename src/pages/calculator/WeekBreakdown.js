@@ -67,17 +67,17 @@ function WeekBreakdown(props) {
       props.WeekBreakdownProps.setHomeComplete(true);
     }
     if (props.WeekBreakdownProps.page === 1) {
-      props.WeekBreakdownProps.timer.takeduration("week breakdown page 1");
+      // props.WeekBreakdownProps.timer.takeduration("week breakdown page 1");
       props.WeekBreakdownProps.setProgress(20);
     } else {
-      props.WeekBreakdownProps.timer.takeduration("week breakdown page 2");
+      // props.WeekBreakdownProps.timer.takeduration("week breakdown page 2");
       props.WeekBreakdownProps.setProgress(50);
     }
     props.WeekBreakdownProps.setPage(props.WeekBreakdownProps.page + 1);
   }
 
   function backButtonClick() {
-    props.WeekBreakdownProps.timer.incrementback();
+    // props.WeekBreakdownProps.timer.incrementback();
     props.WeekBreakdownProps.setPage(props.WeekBreakdownProps.page - 1);
     props.WeekBreakdownProps.setProgress(10);
   }

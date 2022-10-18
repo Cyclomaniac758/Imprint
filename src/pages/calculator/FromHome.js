@@ -10,9 +10,9 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 function FromHome(props) {
   function buttonClick() {
-    props.FromHomeProps.timer.takeduration(
-      "from home page " + (props.FromHomeProps.page - 5).toString()
-    );
+    // props.FromHomeProps.timer.takeduration(
+    //   "from home page " + (props.FromHomeProps.page - 5).toString()
+    // );
     if (props.FromHomeProps.page === 5 && props.FromHomeProps.officeComplete) {
       props.FromHomeProps.calculateResult();
     } else if (props.FromHomeProps.page < 8) {
@@ -26,7 +26,7 @@ function FromHome(props) {
   }
 
   function backButtonClick() {
-    props.FromHomeProps.timer.incrementback();
+    // props.FromHomeProps.timer.incrementback();
     if (props.FromHomeProps.page === 3) {
       props.FromHomeProps.setProgress(20);
     } else if (props.FromHomeProps.page === 6) {

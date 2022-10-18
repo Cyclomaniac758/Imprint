@@ -4,11 +4,11 @@ import { Container } from "@mui/system";
 import Logo from "../../logo/Logo";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Timer from "../../utilities/Timer";
+// import Timer from "../../utilities/Timer";
 
 function Landing(props) {
   const navigate = useNavigate();
-  const timer = new Timer(props.usernum);
+  // const timer = new Timer(props.usernum);
 
   function start() {
     //for user study timing
