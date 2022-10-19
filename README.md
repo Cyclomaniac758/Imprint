@@ -5,12 +5,16 @@ through working from home and working from the office. The calculator prompts th
 
 The application is currently purely client side, running with the React framework and MUI components. Future additions include storage of user results to show population averages and trends.
 
+Dependency management is with npm, currently at version 8.11.0
+
+Before cloning ensure you have Node.js installed, the application is currently running on version 16.15.1.
+
 ***
 
 
 ### `npm i`
 
-To install project dependencies after cloning, use npm i
+To install project dependencies after cloning, use npm i, if there are problems make sure your Node version is high enough.
 
 ### `npm start`
 
